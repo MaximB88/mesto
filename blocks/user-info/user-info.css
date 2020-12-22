@@ -1,0 +1,24 @@
+.user-info {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 48px;
+    font-family: inherit;
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: 400;
+    height: 27px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.user-info:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 320px) {
+    .user-info {
+        margin-bottom: 45px;
+    }
+}
