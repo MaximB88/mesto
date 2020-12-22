@@ -1,16 +1,17 @@
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.button__edit');
+const popup = document.querySelector('.popup');
+
+const editButton = document.querySelector('.button__edit');
 
 function openPopup () {
-    popup.classList.toggle('popup_opened');
+    popup.classList.add('popup_opened');
 }
 
 editButton.addEventListener('click', openPopup);
 
-let closeButton = document.querySelector('.button_close');
+const closeButton = document.querySelector('.button__close');
 
 function closePopup () {
-    popup.classList.toggle('popup_opened');
+    popup.classList.remove('popup_opened');
 }
 
 closeButton.addEventListener('click', closePopup);
