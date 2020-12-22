@@ -3,6 +3,11 @@
     height: 50px;
     background-color: black;
     color: white;
+    border-radius: 2px;
+}
+
+.button__save:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 320px) {

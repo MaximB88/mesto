@@ -8,6 +8,10 @@
     background-position: center;
 }
 
+.button__add:hover {
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 960px) {
     .button__add {
         position: static;

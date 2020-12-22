@@ -6,6 +6,10 @@
     background-repeat: no-repeat;
 }
 
+.button__edit:hover {
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 320px) {
     .button__edit {
         width: 18px;
