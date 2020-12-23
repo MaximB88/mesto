@@ -31,7 +31,6 @@ function getDescription () {
 
 getDescription();
 
-
 function handleFormSubmit (evt) {
     evt.preventDefault();
     const nameInput = userName.value;
@@ -39,6 +38,7 @@ function handleFormSubmit (evt) {
     accountName.textContent = nameInput;
     description.textContent = infoInput;
     popup.classList.remove('popup_opened');
+    console.log(nameInput);
 }
 
 saveButton.addEventListener('submit', handleFormSubmit);
