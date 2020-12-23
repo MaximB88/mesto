@@ -24,8 +24,21 @@ function getUserName() {
 getUserName();
 const userInfo = document.querySelector('.user-info');
 const description = document.querySelector('.description');
+
 function getDescription () {
     userInfo.value = description.textContent;
 }
 
 getDescription();
+
+
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+    const nameInput = userName.value;
+    const infoInput = userInfo.value;
+    accountName.textContent = nameInput;
+    description.textContent = infoInput;
+    popup.classList.remove('popup_opened');
+}
+
+saveButton.addEventListener('submit', handleFormSubmit);
