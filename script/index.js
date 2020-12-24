@@ -41,4 +41,4 @@ function handleFormSubmit (evt) {
     console.log(nameInput);
 }
 
-saveButton.addEventListener('submit', handleFormSubmit);
+saveButton.addEventListener('click', handleFormSubmit);
