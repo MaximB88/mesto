@@ -1,4 +1,4 @@
-.button__close {
+.button_close {
     position: absolute;
     top: -40px;
     right: -40px;
@@ -10,12 +10,12 @@
     border: none;
 }
 
-.button__close:hover {
+.button_close:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width:320px) {
-    .button__close {
+    .button_close {
         width: 26px;
         height: 26px;
         right: 0;

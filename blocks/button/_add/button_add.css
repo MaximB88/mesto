@@ -1,4 +1,4 @@
-.button__add {
+.button_add {
     position: absolute;
     right: 0;
     width: 150px;
@@ -8,12 +8,12 @@
     background-position: center;
 }
 
-.button__add:hover {
+.button_add:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 960px) {
-    .button__add {
+    .button_add {
         position: static;
         margin-top: 36px;
         width: 282px;

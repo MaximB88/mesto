@@ -1,19 +1,19 @@
 const popup = document.querySelector('.popup');
-const editButton = document.querySelector('.button__edit');
+const editButton = document.querySelector('.button_edit');
 
 function openPopup () {
     popup.classList.add('popup_opened');
 }
 
 editButton.addEventListener('click', openPopup);
-const closeButton = document.querySelector('.button__close');
+const closeButton = document.querySelector('.button_close');
 
 function closePopup () {
     popup.classList.remove('popup_opened');
 }
 
 closeButton.addEventListener('click', closePopup);
-const saveButton = document.querySelector('.button__save');
+const saveButton = document.querySelector('.button_save');
 const userName = document.querySelector('.user-name');
 const accountName = document.querySelector('.account__name');
 
@@ -38,7 +38,6 @@ function handleFormSubmit (evt) {
     accountName.textContent = nameInput;
     description.textContent = infoInput;
     popup.classList.remove('popup_opened');
-    console.log(nameInput);
 }
 
 saveButton.addEventListener('click', handleFormSubmit);
