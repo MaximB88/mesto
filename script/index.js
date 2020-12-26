@@ -8,14 +8,8 @@ const description = document.querySelector('.profile__description');
 const form = document.querySelector('.popup__container');
 
 function openPopup () {
-    function getUserName() {
-        userName.value = accountName.textContent;
-    }
-    function getDescription () {
-        userInfo.value = description.textContent;
-    }
-    getUserName();
-    getDescription()
+    userName.value = accountName.textContent;
+    userInfo.value = description.textContent;
     popup.classList.add('popup_opened');
 } 
 

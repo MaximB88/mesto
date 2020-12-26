@@ -12,5 +12,6 @@
         margin-right: 10px;
         line-height: 32px;
         font-size: 27px;
+        max-width: 220px;
     }
 }
