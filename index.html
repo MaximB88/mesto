@@ -13,15 +13,17 @@
 
     <main class="main">
         <section class="profile">
-            <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
-            <div class="profile__info">
-                <div class='account'>
-                    <h1 class="account__name">Жак-Ив Кусто</h1>
-                    <button class="button button_edit"></button>
+            <div class="profile_user">
+                <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+                <div class="profile__info">
+                    <div class='profile__account'>
+                        <h1 class="profile profile__account_name">Жак-Ив Кусто</h1>
+                        <button type="button" class="button profile__edit-button"></button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
                 </div>
-                <p class="description">Исследователь океана</p>
             </div>
-            <button class="button button_add"></button>
+            <button type="button" class="button profile__add-button"></button>
         </section>
 
         <section class="photo">
@@ -31,7 +33,7 @@
                 </div>  
                 <div class="post__description">
                     <h2 class="post__title">Малые Карелы</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
 
@@ -41,7 +43,7 @@
                 </div>
                 <div class="post__description">
                     <h2 class="post__title">Гостиные дворы</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
 
@@ -51,7 +53,7 @@
                 </div>
                 <div class="post__description">
                     <h2 class="post__title">Голубино</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
 
@@ -61,7 +63,7 @@
                 </div>
                 <div class="post__description">
                     <h2 class="post__title">Кинозерье</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
 
@@ -71,7 +73,7 @@
                 </div>
                 <div class="post__description">
                     <h2 class="post__title">Соловки</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
 
@@ -81,21 +83,22 @@
                 </div>
                 <div class="post__description">
                     <h2 class="post__title">Кий остров</h2>
-                    <button class="button button_like"></button>
+                    <button type="button" class="button post__like-button"></button>
                 </div>
             </div>
         </section>
 
-        <section class="popup">
-            <form action="" class="popup__container">
-                <button class="button button_close"></button>
-                <h3 class="popup__name">Редактировать профиль</h3>
-                <input type="text" class="user-name">
-                <input type="text" class="user-info">
-                <button class="button button_save">Сохранить</button>
-            </form>
-        </section>
     </main>
+
+    <section class="popup">
+        <form name="edit-profile" class="popup__container">
+            <button type="button" class="button popup__close-button"></button>
+            <h3 class="popup__name">Редактировать профиль</h3>
+            <input type="text" name ="user-name" class="popup__input">
+            <input type="text" name ="user-info" class="popup__input">
+            <button type="submit" class="button popup__save-button">Сохранить</button>
+        </form>
+    </section>
 
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>

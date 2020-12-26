@@ -1,12 +1,14 @@
-.account__name {
+.profile__account_name {
     margin:0 18px 0 0;
     font-size: 42px;
     font-weight: 500;
     line-height: 48px;
+    max-width: 350px;
+    word-break: break-all;
 }
 
 @media screen and (max-width: 960px) {
-    .account__name {
+    .profile__account_name {
         margin-right: 10px;
         line-height: 32px;
         font-size: 27px;

@@ -1,4 +1,4 @@
-.button_save {
+.popup__save-button {
     width: 358px;
     height: 50px;
     background-color: black;
@@ -6,12 +6,12 @@
     border-radius: 2px;
 }
 
-.button_save:hover {
+.popup__save-button:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 680px) {
-    .button_save {
+    .popup__save-button {
         width: 238px;
         height: 46px;
     }
