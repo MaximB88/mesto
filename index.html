@@ -27,6 +27,18 @@
         </section>
 
         <section class="photo">
+            <template id="new-post">
+                <div class="post">
+                    <div class="post__photo-area">    
+                        <img src="" alt="" class="post__photo">
+                    </div>  
+                    <div class="post__description">
+                        <h2 class="post__title"></h2>
+                        <button type="button" class="button post__like-button"></button>
+                    </div>
+                </div>
+            </template>
+            
             <div class="post">
                 <div class="post__photo-area">    
                     <img src="./images/malie_kareli.jpg" alt="Малые Карелы" class="post__photo">
@@ -97,6 +109,16 @@
             <input type="text" name ="user-name" class="popup__input">
             <input type="text" name ="user-info" class="popup__input">
             <button type="submit" class="button popup__save-button">Сохранить</button>
+        </form>
+    </section>
+
+    <section class="popup-add">
+        <form name="add-card" class="popup-add__container">
+            <button type="button" class="button popup-add__close-button"></button>
+            <h3 class="popup-add__name">Новое место</h3>
+            <input type="text" name ="place-name" class="popup-add__input" placeholder="Название">
+            <input type="text" name ="place-link" class="popup-add__input" placeholder="Ссылка на картинку">
+            <button type="submit" class="button popup-add__save-button">Создать</button>
         </form>
     </section>
 
