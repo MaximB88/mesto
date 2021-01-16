@@ -48,13 +48,15 @@ initialCards.forEach(function (el) {
   cardElement.querySelector('.post__like-button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('post__like-button_active');
   });
-  cardElement.querySelector('.post__delete-button').addEventListener('click', function () {
-    const deleteButton = document.querySelector('.post__delete-button');
-    const post = deleteButton.closest('.post');
-    post.remove();
+  cardElement.querySelector('.post__delete-button').addEventListener('click', function (evt) {
+    evt.target.closest('.post').remove();
   })
   photo.appendChild(cardElement);
 });
+
+/*function handleDelete (evt) {
+  evt.target.closest('.post').remove();
+}*/
 
 function openPopup () {
     userName.value = accountName.textContent;
