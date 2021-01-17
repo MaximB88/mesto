@@ -14,6 +14,9 @@ const postForm = document.querySelector('.popup-add__container');
 const postName = document.querySelector('input[name = "place-name"]');
 const postPhoto = document.querySelector('input[name = "place-link"]');
 const itemTemplate = document.querySelector('#new-post').content;
+const popupView = document.querySelector('.popup-view');
+const viewCloseButton = document.querySelector('.popup-view__close-button');
+const viewOpenButton = document.querySelector('.post__photo');
 const initialCards = [
   {
     name: 'Архыз',
@@ -43,6 +46,8 @@ const initialCards = [
 
 initialCards.forEach(function (el) {
   const cardElement = itemTemplate.cloneNode(true);
+  const popup = document.querySelector('.popup-view');
+  
   cardElement.querySelector('.post__title').textContent = el.name;
   cardElement.querySelector('.post__photo').src = el.link;
   cardElement.querySelector('.post__like-button').addEventListener('click', function (evt) {
@@ -51,18 +56,25 @@ initialCards.forEach(function (el) {
   cardElement.querySelector('.post__delete-button').addEventListener('click', function (evt) {
     evt.target.closest('.post').remove();
   })
+  cardElement.querySelector('.post__photo').addEventListener('click', function (evt) {
+    popup.classList.add('popup-view_opened');
+    const popupPhoto = document.querySelector('.popup-view__photo');
+    const popupText = document.querySelector('.popup-view__description');
+    popupText.textContent = el.name;
+    popupPhoto.src = el.link;
+  })
   photo.appendChild(cardElement);
 });
-
-/*function handleDelete (evt) {
-  evt.target.closest('.post').remove();
-}*/
 
 function openPopup () {
     userName.value = accountName.textContent;
     userInfo.value = description.textContent;
     popup.classList.add('popup_opened');
 } 
+
+function closeViewPopup () {
+  popupView.classList.remove('popup-view_opened');
+}
 
 function openAddPopup () {
     popupAdd.classList.add('popup-add_opened');
@@ -96,5 +108,6 @@ editButton.addEventListener('click', openPopup);
 addButton.addEventListener('click', openAddPopup);
 editCloseButton.addEventListener('click', closePopup);
 addCloseButton.addEventListener('click', closeAddPopup);
+viewCloseButton.addEventListener('click', closeViewPopup);
 userForm.addEventListener('submit', handleFormSubmit);
 postForm.addEventListener('submit', handleAddFormSubmit);

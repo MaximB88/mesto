@@ -1,0 +1,9 @@
+.popup-view__container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*max-width: 75vw;
+    max-height: 75vh;*/
+}
