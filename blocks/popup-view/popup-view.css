@@ -1,5 +1,6 @@
 .popup-view {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     justify-content: center;
     align-items: center;
     position: fixed;
