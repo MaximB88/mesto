@@ -4,7 +4,6 @@ const viewImage = document.querySelector('.popup_type_show');
 const cardPhoto = document.querySelector('.photo');
 const addButton = document.querySelector('.profile__add-button'); 
 const editButton = document.querySelector('.profile__edit-button');
-
 const editCloseButton = document.querySelector('.popup__close-button_type_edit');
 const addCloseButton = document.querySelector('.popup__close-button_type_add');
 const showCloseButton = document.querySelector('.popup__close-button_type_show');
@@ -47,6 +46,7 @@ function handleAddFormSubmit (evt) {
   newPost.name = postName.value;
   newPost.link = postPhoto.value;
   renderCard(newPost);
+  postForm.reset();
 }
 
 function getCard (data) {
