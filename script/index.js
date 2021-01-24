@@ -4,7 +4,7 @@ const viewImage = document.querySelector('.popup_type_show');
 const cardPhoto = document.querySelector('.photo');
 const addButton = document.querySelector('.profile__add-button'); 
 const editButton = document.querySelector('.profile__edit-button');
-const likeButton = document.querySelector('.post__like-button');
+
 const editCloseButton = document.querySelector('.popup__close-button_type_edit');
 const addCloseButton = document.querySelector('.popup__close-button_type_add');
 const showCloseButton = document.querySelector('.popup__close-button_type_show');
@@ -22,26 +22,12 @@ const itemTemplate = document.querySelector('#new-post').content;
 const popupPhoto = document.querySelector('.popup__photo');
 const popupText = document.querySelector('.popup__description');
 
-
-function openPopup (evt, target) {
-  if (evt.target === editButton) {
-    editProfileInfo();
-    editProfile.classList.add('popup_opened');
-  } else if (evt.target === addButton){
-    addCard.classList.add('popup_opened');
-  } else {
-    viewImage.classList.add('popup_opened');
-  }
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
 }
 
-function closePopup (evt, target) {
-  if (evt.target === editCloseButton || evt.target === editSaveButton) {
-    editProfile.classList.remove('popup_opened');
-  }else if (evt.target === addCloseButton || evt.target === addSaveButton) {
-    addCard.classList.remove('popup_opened');
-  }else if (evt.target === showCloseButton) { 
-    viewImage.classList.remove('popup_opened');
-  }
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
 }
 
 function editProfileInfo () {
@@ -58,8 +44,8 @@ function handleFormSubmit (evt) {
 function handleAddFormSubmit (evt) {
   evt.preventDefault();
   const newPost = {};
-  newPost.name = postName.value
-  newPost.link = postPhoto.value
+  newPost.name = postName.value;
+  newPost.link = postPhoto.value;
   renderCard(newPost);
 }
 
@@ -67,6 +53,7 @@ function getCard (data) {
   const cardElement = itemTemplate.cloneNode(true);
   cardElement.querySelector('.post__title').textContent = data.name;
   cardElement.querySelector('.post__photo').src = data.link;
+  cardElement.querySelector('.post__photo').alt = data.name;
   cardElement.querySelector('.post__like-button').addEventListener('click', likeCard);
   cardElement.querySelector('.post__delete-button').addEventListener('click', removeCard);
   cardElement.querySelector('.post__photo').addEventListener('click', showCard);
@@ -77,12 +64,14 @@ function renderCard(data) {
   cardPhoto.prepend(getCard(data));
 }
 
+const showButton = document.querySelector('.post__photo');
+
 function removeCard (evt) {
   evt.target.closest('.post').remove();
 }
 
 function showCard (evt) {
-  openPopup(evt);
+  openPopup(viewImage);
   const post = evt.target.closest('.post');
   popupText.textContent = post.querySelector('.post__title').textContent;
   popupPhoto.src = evt.target.src;
@@ -96,13 +85,27 @@ initialCards.forEach(function(data) {
   renderCard(data);
 });
 
-editButton.addEventListener('click', openPopup);
-addButton.addEventListener('click', openPopup);
-cardPhoto.addEventListener('click', openPopup);
-editCloseButton.addEventListener('click', closePopup);
-addCloseButton.addEventListener('click', closePopup);
-showCloseButton.addEventListener('click', closePopup);
-editSaveButton.addEventListener('click', closePopup);
-addSaveButton.addEventListener('click', closePopup);
+editButton.addEventListener('click', function () {
+  editProfileInfo();
+  openPopup(editProfile);
+});
+addButton.addEventListener('click', function () {
+  openPopup(addCard);
+});
+editCloseButton.addEventListener('click', function () {
+  closePopup(editProfile);
+});
+addCloseButton.addEventListener('click', function () {
+  closePopup(addCard);
+});
+showCloseButton.addEventListener('click', function () {
+  closePopup(viewImage);
+});
+editSaveButton.addEventListener('click', function () {
+  closePopup(editProfile);
+});
+addSaveButton.addEventListener('click', function () {
+  closePopup(addCard);
+});
 userForm.addEventListener('submit', handleFormSubmit);
 postForm.addEventListener('submit', handleAddFormSubmit);
