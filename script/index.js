@@ -1,3 +1,4 @@
+const overlay = document.querySelectorAll('.popup');
 const addCard = document.querySelector('.popup_type_add');
 const editProfile = document.querySelector('.popup_type_edit');
 const viewImage = document.querySelector('.popup_type_show');
@@ -20,6 +21,8 @@ const postPhoto = document.querySelector('input[name = "place-link"]');
 const itemTemplate = document.querySelector('#new-post').content;
 const popupPhoto = document.querySelector('.popup__photo');
 const popupText = document.querySelector('.popup__description');
+const input = document.querySelectorAll('.popup__input');
+const overlayArr = Array.from(overlay);
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
@@ -32,6 +35,7 @@ function closePopup (popup) {
 function editProfileInfo () {
   userName.value = accountName.textContent;
   userInfo.value = description.textContent;
+  enableValidation();
 }
 
 function handleFormSubmit (evt) {
@@ -95,12 +99,33 @@ addButton.addEventListener('click', function () {
 editCloseButton.addEventListener('click', function () {
   closePopup(editProfile);
 });
+
+editProfile.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(editProfile);
+  }
+});
+
 addCloseButton.addEventListener('click', function () {
   closePopup(addCard);
 });
+
+addCard.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(addCard);
+  }
+});
+
 showCloseButton.addEventListener('click', function () {
   closePopup(viewImage);
 });
+
+viewImage.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(viewImage);
+  }
+});
+
 editSaveButton.addEventListener('click', function () {
   closePopup(editProfile);
 });
@@ -109,3 +134,11 @@ addSaveButton.addEventListener('click', function () {
 });
 userForm.addEventListener('submit', handleFormSubmit);
 postForm.addEventListener('submit', handleAddFormSubmit);
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === "Escape") {
+    overlayArr.forEach(function (item) {
+      closePopup(item);
+    });
+  }
+});
