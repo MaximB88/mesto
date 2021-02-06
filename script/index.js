@@ -24,24 +24,28 @@ const popupText = document.querySelector('.popup__description');
 const input = document.querySelectorAll('.popup__input');
 const overlayArr = Array.from(overlay);
 
+
+
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keydownEsc);
 }
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keydownEsc);
 }
 
 function editProfileInfo () {
   userName.value = accountName.textContent;
   userInfo.value = description.textContent;
-  enableValidation();
 }
 
-function handleFormSubmit (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   accountName.textContent = userName.value;
   description.textContent = userInfo.value;
+  closePopup(document.querySelector('.popup_opened'));
 }
 
 function handleAddFormSubmit (evt) {
@@ -50,7 +54,8 @@ function handleAddFormSubmit (evt) {
   newPost.name = postName.value;
   newPost.link = postPhoto.value;
   renderCard(newPost);
-  postForm.reset();
+  resetForm();
+  closePopup(document.querySelector('.popup_opened'));
 }
 
 function getCard (data) {
@@ -83,6 +88,12 @@ function showCard (evt) {
 
 function likeCard (evt) {
   evt.target.classList.toggle('post__like-button_active');
+}
+
+const keydownEsc = (event) => {
+  if (event.key === "Escape") {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 initialCards.forEach(function(data) {
@@ -126,19 +137,5 @@ viewImage.addEventListener('click', function (event) {
   }
 });
 
-editSaveButton.addEventListener('click', function () {
-  closePopup(editProfile);
-});
-addSaveButton.addEventListener('click', function () {
-  closePopup(addCard);
-});
-userForm.addEventListener('submit', handleFormSubmit);
+userForm.addEventListener('submit', handleProfileFormSubmit);
 postForm.addEventListener('submit', handleAddFormSubmit);
-
-document.addEventListener('keydown', function (event) {
-  if (event.key === "Escape") {
-    overlayArr.forEach(function (item) {
-      closePopup(item);
-    });
-  }
-});
