@@ -1,12 +1,3 @@
-/*const selectors = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-buton_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-}*/
-
 const showInputError = (formElement, inputElement, selectors, errorMessage,) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(selectors.inputErrorClass);
@@ -66,11 +57,6 @@ const enableValidation = (selectors) => {
       });
     setEventListeners(formElement, selectors);
     });
-}
-
-const resetForm = () => {
-  postForm.reset();
-  addSaveButton.classList.add('popup__save-buton_inactive');
 }
 
 enableValidation({

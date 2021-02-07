@@ -23,7 +23,14 @@ const popupPhoto = document.querySelector('.popup__photo');
 const popupText = document.querySelector('.popup__description');
 const input = document.querySelectorAll('.popup__input');
 const overlayArr = Array.from(overlay);
-
+const validationConfig = ({
+  formSelector: '.popup__form', 
+  inputSelector: '.popup__input', 
+  submitButtonSelector: '.popup__save-button', 
+  inactiveButtonClass: 'popup__save-buton_inactive', 
+  inputErrorClass: 'popup__input_type_error', 
+  errorClass: 'popup__input-error_active' 
+})
 
 
 function openPopup (popup) {
@@ -48,13 +55,19 @@ function handleProfileFormSubmit (evt) {
   closePopup(document.querySelector('.popup_opened'));
 }
 
+const resetAddCardForm = (validationConfig) => {
+  postForm.reset();
+  addSaveButton.classList.add(validationConfig.inactiveButtonClass);
+  addSaveButton.disabled = true;
+}
+
 function handleAddFormSubmit (evt) {
   evt.preventDefault();
   const newPost = {};
   newPost.name = postName.value;
   newPost.link = postPhoto.value;
   renderCard(newPost);
-  resetForm();
+  resetAddCardForm(validationConfig);
   closePopup(document.querySelector('.popup_opened'));
 }
 
