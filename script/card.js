@@ -1,11 +1,13 @@
-import {viewImage, openPopup, popupPhoto, popupText} from './index.js';
+import {openPopup,} from './index.js';
+import {viewImage, popupPhoto, popupText} from '../utils/constants.js'
 
 export class Card {
+
     constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-    }
+    } 
 
     _getTemplate() {
         const cardElement = document
@@ -17,11 +19,19 @@ export class Card {
         return cardElement;
     }
 
+    _getPostPhoto() {
+        const selector = this._element.querySelector('.post__photo');
+
+        return selector;
+    }
+
     generateCard() {
         this._element = this._getTemplate();
+        this._postPhoto = this._getPostPhoto();
 
         this._element.querySelector('.post__title').textContent =  this._name;
-        this._element.querySelector('.post__photo').src = this._link;
+        this._postPhoto.src = this._link;
+        this._postPhoto.alt = this._name;
       
         this._setEventListeners();
         
@@ -40,6 +50,7 @@ export class Card {
         openPopup(viewImage);
         popupText.textContent = this._name;
         popupPhoto.src = this._link;
+        popupPhoto.alt = this._name;
       }
 
     _setEventListeners() {
@@ -49,8 +60,9 @@ export class Card {
         this._element.querySelector('.post__delete-button').addEventListener('click', () => {
             this._removeCard()
         });
-        this._element.querySelector('.post__photo').addEventListener('click', () => {
+        this._postPhoto.addEventListener('click', () => {
             this._showCard()
-        });
+        })
     }
+    
 }
