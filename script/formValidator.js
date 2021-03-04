@@ -66,17 +66,14 @@ export class FormValidator {
       this._setEventListeners();
     }
 
-    clearValidation(inputElement) {
+    /*clearValidation(inputElement) {
         this._hideInputError(inputElement);
-    }
-
-    /*enableValidation = () => {
-      const formList = Array.from(this._form.querySelectorAll(this._formSelector));
-        formList.forEach(() => {
-          this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-          });
-        this._setEventListeners();
-        });
     }*/
+
+    clearValidation() {
+      const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+      inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
+      });
+    }
 }

@@ -1,4 +1,4 @@
-import {openPopup,} from './index.js';
+import {openPopup,} from '../utils/utils.js';
 import {viewImage, popupPhoto, popupText} from '../utils/constants.js'
 
 export class Card {
@@ -20,9 +20,9 @@ export class Card {
     }
 
     _getPostPhoto() {
-        const selector = this._element.querySelector('.post__photo');
+        const photo = this._element.querySelector('.post__photo');
 
-        return selector;
+        return photo;
     }
 
     generateCard() {

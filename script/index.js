@@ -1,6 +1,7 @@
 import {Card} from './card.js';
 import {FormValidator} from './formValidator.js';
 import {popupPhoto, viewImage} from '../utils/constants.js';
+import {openPopup, closePopup} from '../utils/utils.js';
 
 const initialCards = [
   {
@@ -54,16 +55,6 @@ const userInfo = document.querySelector('input[name ="user-info"]');
 const postName = document.querySelector('input[name = "place-name"]');
 const postPhoto = document.querySelector('input[name = "place-link"]');
 
-export function openPopup (popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', keydownEsc);
-}
-
-function closePopup (popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', keydownEsc);
-}
-
 function editProfileInfo () {
   userName.value = accountName.textContent;
   userInfo.value = description.textContent;
@@ -85,7 +76,8 @@ const resetAddCardForm = (validationConfig) => {
 function createCard (newPost) {
   const card = new Card(newPost, '#new-post');
   const cardElement = card.generateCard();
-  cardPhoto.prepend(cardElement);
+
+  return cardElement;
 }
 
 function handleAddFormSubmit (evt) {
@@ -93,20 +85,16 @@ function handleAddFormSubmit (evt) {
   const newPost = {};
   newPost.name = postName.value;
   newPost.link = postPhoto.value;
-  createCard(newPost);
+  const post = createCard(newPost);
+  cardPhoto.prepend(post);
   resetAddCardForm(validationConfig);
   closePopup(popupAddCard);
 }
 
 initialCards.forEach((newPost) => {
-  createCard(newPost);
-})
-
-const keydownEsc = (event) => {
-  if (event.key === "Escape") {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-}
+  const post = createCard(newPost);
+  cardPhoto.prepend(post);
+});
 
 const closeByOverlay = (event, popup) => {
   if (event.target === event.currentTarget) {
@@ -116,14 +104,12 @@ const closeByOverlay = (event, popup) => {
 
 editButton.addEventListener('click', function () {
   editProfileInfo();
-  validatePopupEdit.clearValidation(userName);
-  validatePopupEdit.clearValidation(userInfo);
+  validatePopupEdit.clearValidation(userForm);
   openPopup(popupEditProfile);
 });
 addButton.addEventListener('click', function () {
   resetAddCardForm(validationConfig);
-  validatePopupAdd.clearValidation(postName);
-  validatePopupAdd.clearValidation(postPhoto);
+  validatePopupAdd.clearValidation(postForm);
   openPopup(popupAddCard);
 });
 editCloseButton.addEventListener('click', function () {
@@ -147,9 +133,7 @@ showCloseButton.addEventListener('click', function () {
 });
 
 viewImage.addEventListener('click', function (event) {
-  if (event.target === event.currentTarget) {
-    closePopup(viewImage);
-  }
+  closeByOverlay(event, viewImage);
 });
 
 userForm.addEventListener('submit', handleProfileFormSubmit);
