@@ -1,12 +1,10 @@
-import {openPopup,} from '../utils/utils.js';
-import {viewImage, popupPhoto, popupText} from '../utils/constants.js'
-
 export class Card {
 
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, {handleCardClick}) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     } 
 
     _getTemplate() {
@@ -46,12 +44,14 @@ export class Card {
         this._element.remove();
     }
 
-    _showCard () {
+    
+
+    /*_showCard () {
         openPopup(viewImage);
         popupText.textContent = this._name;
         popupPhoto.src = this._link;
         popupPhoto.alt = this._name;
-      }
+      }*/
 
     _setEventListeners() {
         this._element.querySelector('.post__like-button').addEventListener('click', () => {
@@ -61,7 +61,7 @@ export class Card {
             this._removeCard()
         });
         this._postPhoto.addEventListener('click', () => {
-            this._showCard()
+            this._handleCardClick()
         })
     }
     
