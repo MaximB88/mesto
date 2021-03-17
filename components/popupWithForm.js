@@ -4,7 +4,7 @@ export class PopupWithForm extends Popup {
     constructor(popup, {handleFormSubmit}) {
         super(popup);
         this._handleFormSubmit = handleFormSubmit;
-        this._element = document.querySelector('form[name = "add-card"]');
+        this._element = this._popup.querySelector('form');
     }
     
     _getInputValues() {
@@ -15,6 +15,7 @@ export class PopupWithForm extends Popup {
             this._formValues[input.name] = input.value
             
         });
+
         return this._formValues;
     }
     

@@ -7,6 +7,7 @@ export class FormValidator {
         this._inputErrorClass = formConfig.inputErrorClass;
         this._errorClass = formConfig.errorClass
         this._form = form;
+        this._submitButton = this._form.querySelector('.popup__save-button');
     }
  
     _showInputError = (inputElement, errorMessage,) => {
@@ -66,14 +67,11 @@ export class FormValidator {
       this._setEventListeners();
     }
 
-    /*clearValidation(inputElement) {
-        this._hideInputError(inputElement);
-    }*/
-
     clearValidation() {
       const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
       inputList.forEach((inputElement) => {
         this._hideInputError(inputElement);
+        this._submitButton.disabled = true;
       });
     }
 }

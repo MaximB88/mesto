@@ -44,15 +44,6 @@ export class Card {
         this._element.remove();
     }
 
-    
-
-    /*_showCard () {
-        openPopup(viewImage);
-        popupText.textContent = this._name;
-        popupPhoto.src = this._link;
-        popupPhoto.alt = this._name;
-      }*/
-
     _setEventListeners() {
         this._element.querySelector('.post__like-button').addEventListener('click', () => {
             this._likeCard()
@@ -61,8 +52,7 @@ export class Card {
             this._removeCard()
         });
         this._postPhoto.addEventListener('click', () => {
-            this._handleCardClick()
+            this._handleCardClick(this._postPhoto)
         })
     }
-    
 }
