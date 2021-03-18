@@ -7,7 +7,7 @@ export class FormValidator {
         this._inputErrorClass = formConfig.inputErrorClass;
         this._errorClass = formConfig.errorClass
         this._form = form;
-        this._submitButton = this._form.querySelector('.popup__save-button');
+        this._submitButton = this._form.querySelector(this._submitButtonSelector);
     }
  
     _showInputError = (inputElement, errorMessage,) => {
@@ -50,12 +50,11 @@ export class FormValidator {
         
     _setEventListeners = () => {
       const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-      const buttonElement = this._form.querySelector( this._submitButtonSelector);
-      this._toggleButtonState(inputList, buttonElement);
+      this._toggleButtonState(inputList, this._submitButton);
       inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
           this._checkInputValidity(inputElement);
-          this._toggleButtonState(inputList, buttonElement);
+          this._toggleButtonState(inputList, this._submitButton);
         });
       });
     }
