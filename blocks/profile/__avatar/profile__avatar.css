@@ -15,9 +15,6 @@
     content: '';
     position: absolute;
     pointer-events: none;
-}
-
-.profile__avatar::after {
     width: 26px;
     height: 26px;
     background-image: url('../../../images/icon__change-avatar.svg');
