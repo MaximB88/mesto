@@ -8,23 +8,15 @@
     margin-right: 30px;
     cursor: pointer;
     object-fit: cover;
+    background-image: url(#); /*изменение автара, поставил заглушку для подгрузки с сервера*/
 }
 
-.profile__avatar::before,
 .profile__avatar::after {
     content: '';
     position: absolute;
     pointer-events: none;
 }
 
-.profile__avatar::before {
-    background: rgba(0, 0, 0, 0);
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
-  
 .profile__avatar::after {
     width: 26px;
     height: 26px;
@@ -34,15 +26,6 @@
     top: 50%;
     left: 50%;
 }
-  
-.profile__avatar:hover::before {
-    background: rgba(0, 0, 0, 0.8);
-}
-  
-.profile__avatar:hover::after {
-    opacity: 1;
-}
-
 
 @media screen and (max-width: 960px) {
     .profile__avatar {
