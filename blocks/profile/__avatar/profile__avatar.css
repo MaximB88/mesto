@@ -1,9 +1,48 @@
 .profile__avatar {
-    max-width: 120px;
-    max-height: 120px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     margin-right: 30px;
+    cursor: pointer;
+    object-fit: cover;
 }
+
+.profile__avatar::before,
+.profile__avatar::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+
+.profile__avatar::before {
+    background: rgba(0, 0, 0, 0);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  
+.profile__avatar::after {
+    width: 26px;
+    height: 26px;
+    background-image: url('../../../images/icon__change-avatar.svg');
+    background-size: contain;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+}
+  
+.profile__avatar:hover::before {
+    background: rgba(0, 0, 0, 0.8);
+}
+  
+.profile__avatar:hover::after {
+    opacity: 1;
+}
+
 
 @media screen and (max-width: 960px) {
     .profile__avatar {

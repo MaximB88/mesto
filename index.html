@@ -13,13 +13,13 @@
     <main class="main">
         <section class="profile">
             <div class="profile__user">
-                <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+                <img src="№" alt="Аватар" class="profile__avatar">
                 <div class="profile__info">
                     <div class='profile__account'>
-                        <h1 class="profile__account-name">Жак-Ив Кусто</h1>
+                        <h1 class="profile__account-name"></h1>
                         <button type="button" class="button profile__edit-button"></button>
                     </div>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description"></p>
                 </div>
             </div>
             <button type="button" class="button profile__add-button"></button>
@@ -37,7 +37,7 @@
             <h3 class="popup__name">Редактировать профиль</h3>
             <input id="name-input" type="text" name ="name" class="popup__input" placeholder="Имя" required minlength="2" maxlength="40">
             <span class="popup__input-error name-input-error"></span>
-            <input id="info-input" type="text" name ="info" class="popup__input" placeholder="О себе" required minlength="2" maxlength="200">
+            <input id="info-input" type="text" name ="about" class="popup__input" placeholder="О себе" required minlength="2" maxlength="200">
             <span class="popup__input-error info-input-error"></span>
             <button type="submit" class="button popup__save-button popup__save-button_type-edit">Сохранить</button>
         </form>
@@ -63,6 +63,24 @@
         </div>
     </article>
 
+    <article class="popup popup_type_accept">
+        <form name="accept" class="popup__form" novalidate>
+            <button type="button" class="button popup__close-button popup__close-button_type_accept"></button>
+            <h3 class="popup__name">Вы уверены?</h3>
+            <button class="button popup__save-button popup__save-button_type_accept">Да</button>
+        </form>
+    </article>
+
+    <article class="popup popup_type_change-avatar">
+        <form name="change-avatar" class="popup__form">
+            <button type="button" class="button popup__close-button popup__close-button_type_change-avatar"></button>
+            <h3 class="popup__name">Обновить автар</h3>
+            <input id="avatar-link-input" type="url" name ="link" class="popup__input" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error avatar-link-input-error"></span>
+            <button class="button popup__save-button popup__save-button_type_change-avatar">Сохранить</button>
+        </form>
+    </article>
+
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
@@ -75,7 +93,10 @@
             </div>  
             <div class="post__description">
                 <h2 class="post__title"></h2>
-                <button type="button" class="button post__like-button"></button>
+                <div class="post__likes">
+                    <button type="button" class="button post__like-button"></button>
+                    <p class="post__likes-count">2</p>
+                </div>
             </div>
         </div>
     </template>  
