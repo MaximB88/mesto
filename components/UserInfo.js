@@ -9,7 +9,6 @@ export class UserInfo {
         this._profile = {};
         this._profile.name = this._userName.textContent;
         this._profile.about = this._userInfo.textContent;
-        this._userAvatar.src = userAvatar;
         return this._profile;
     }
 
