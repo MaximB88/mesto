@@ -7,6 +7,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import { PopupWithAccept} from '../components/PopupWithAccept';
 import {Api} from '../components/Api.js';
+import {apiConfig, headers} from '../utils/constants.js';
 
 const validationConfig = ({
   formSelector: '.popup__form', 
@@ -32,7 +33,7 @@ const nameInput = document.querySelector('#name-input');
 const infoInput = document.querySelector('#info-input');
 let userId = null;
 
-const api = new Api();
+const api = new Api(apiConfig, headers);
 
 const createCard = (formData) => {
   return new Card(
