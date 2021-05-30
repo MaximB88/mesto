@@ -5,7 +5,6 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
-import { PopupWithAccept} from '../components/PopupWithAccept';
 import {Api} from '../components/Api.js';
 import {apiConfig, headers} from '../utils/constants.js';
 
@@ -50,15 +49,15 @@ const createCard = (formData) => {
         .catch(err => console.log(`Ошибка постановки лайка: ${err}`));
     },
     handleDeleteIconClick: (card) => { //что произойдет при нажатии на удаление карточки
-      popupWithAccept.setSubmitAccept(() => {
-        popupWithAccept.loading(true)
+      popupWithAccept.setSubmitHandler(() => {
+        popupWithAccept.renderLoading(true, 'Удаление...')
         api.deleteCard(card.id())
         .then(() => {
           card.deleteCard();
           popupWithAccept.close();
         })
         .catch(err => console.log(`Ошибка удаления карточки: ${err}`))
-        .finally(() => popupWithAccept.loading(false));
+        .finally(() => popupWithAccept.renderLoading(false));
       })
       popupWithAccept.open();
     }
@@ -81,7 +80,7 @@ const renderItems = (data) => {
 const popupWithImage = new PopupWithImage(popupShowCard);
 popupWithImage.setEventListeners();
 
-const popupWithAccept = new PopupWithAccept(
+const popupWithAccept = new PopupWithForm(
   popupAccept, {
     handleFormSubmit: () => {}
   });
@@ -90,7 +89,7 @@ popupWithAccept.setEventListeners();
 const popupWithAddForm = new PopupWithForm(
   popupAddCard,
   {handleFormSubmit: (formData) => {
-    popupWithAddForm.loading(true)
+    popupWithAddForm.renderLoading(true)
     api.setNewCard(formData)
       .then(formData => {
         const card = createCard(formData);
@@ -98,7 +97,7 @@ const popupWithAddForm = new PopupWithForm(
         popupWithAddForm.close();
       })
       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
-      .finally(() => popupWithAddForm.loading(false));
+      .finally(() => popupWithAddForm.renderLoading(false));
   
 }});
 
@@ -107,7 +106,7 @@ popupWithAddForm.setEventListeners();
 const popupWithAvatar = new PopupWithForm(
   popupEditAvatar,
   {handleFormSubmit: (data) => {
-    popupWithAvatar.loading(true)
+    popupWithAvatar.renderLoading(true)
     api.setUserAvatar(data)
       .then(formData => {
         profile.setUserInfo({
@@ -117,7 +116,7 @@ const popupWithAvatar = new PopupWithForm(
         popupWithAvatar.close();
       })
       .catch(err => console.log(`Ошибка обновления аватара: ${err}`))
-      .finally(() => popupWithAvatar.loading(false));
+      .finally(() => popupWithAvatar.renderLoading(false));
       
   }}
 )
@@ -127,7 +126,7 @@ popupWithAvatar.setEventListeners();
 const popupWithEditForm = new PopupWithForm(
   popupEditProfile,
   {handleFormSubmit: (data) => {
-    popupWithEditForm.loading(true);
+    popupWithEditForm.renderLoading(true);
     api.setUserInfo(data)
       .then(data => {
         profile.setUserInfo({
@@ -137,7 +136,7 @@ const popupWithEditForm = new PopupWithForm(
         popupWithEditForm.close();
       })
       .catch(err => console.log(`Ошибка обновления информации пользователя: ${err}`))
-      .finally(() => popupWithEditForm.loading(false));
+      .finally(() => popupWithEditForm.renderLoading(false));
   }});
 
 popupWithEditForm.setEventListeners();

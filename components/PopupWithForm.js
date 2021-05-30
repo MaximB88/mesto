@@ -7,10 +7,10 @@ export class PopupWithForm extends Popup {
         this._element = this._popup.querySelector('form');
         this._button = this._popup.querySelector('.popup__save-button');
         this._buttonDefaultText = this._button.textContent;
+        this._inputList = this._popup.querySelectorAll('.popup__input');
     }
     
     _getInputValues() {
-        this._inputList = this._popup.querySelectorAll('.popup__input');
         this._formValues = {};
 
         this._inputList.forEach(input  => {
@@ -28,8 +28,12 @@ export class PopupWithForm extends Popup {
         })
     }
 
-    loading(data) {
-        this._button.textContent = data ? 'Загрузка...' : this._buttonDefaultText;
+    renderLoading(data, loadingText = 'Загрузка...') {
+        this._button.textContent = data ? loadingText : this._buttonDefaultText;
+    }
+
+    setSubmitHandler(data) {
+        this._handleFormSubmit = data;
     }
 
     close() {
