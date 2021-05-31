@@ -8,20 +8,6 @@
     margin-right: 30px;
     cursor: pointer;
     object-fit: cover;
-    background-image: url(#); /*изменение автара, поставил заглушку для подгрузки с сервера*/
-}
-
-.profile__avatar::after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    width: 26px;
-    height: 26px;
-    background-image: url('../../../images/icon__change-avatar.svg');
-    background-size: contain;
-    opacity: 0;
-    top: 50%;
-    left: 50%;
 }
 
 @media screen and (max-width: 960px) {

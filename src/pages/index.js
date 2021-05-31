@@ -16,7 +16,7 @@ const popupAccept = document.querySelector('.popup_type_accept');
 const cardPhoto = document.querySelector('.photo');
 const addButton = document.querySelector('.profile__add-button'); 
 const editButton = document.querySelector('.profile__edit-button');
-const editAvatarButton = document.querySelector('.profile__avatar');
+const editAvatarButton = document.querySelector('.profile__edit-avatar-button');
 const userForm = document.querySelector('form[name="edit-profile"]');
 const postForm = document.querySelector('form[name = "add-card"]');
 const avatarForm = document.querySelector('form[name = "change-avatar"]');
